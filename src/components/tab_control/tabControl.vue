@@ -18,6 +18,7 @@ import goodsItem from '../goods/goods_item.vue'
 export default {
     name: 'tanControl',
     components: {goodsItem },
+    
     methods: {
         tab_control(i){
             this.active_index = i
@@ -29,6 +30,9 @@ export default {
             active_index: '',
             data: ['精选', '热卖', '优惠']
         }
+    },
+    destroyed(){
+        console.log(1)
     }
 }
 </script>

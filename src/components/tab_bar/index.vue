@@ -1,6 +1,6 @@
 <template>
    <div class="tab">
-       <tab-bar-item path='/home'>
+       <tab-bar-item path='/home/goodsItem'>
             <img slot="item-icon" src='../../../assets/images/tab-bar/home.png' />
             <img slot="item-icon-active" src='../../../assets/images/tab-bar/home_active.png' />
             <div slot="item-text">首页</div>
@@ -31,7 +31,7 @@ export default {
     methods:{},
     data(){
         return {
-
+            
         }
     }
 }

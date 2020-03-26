@@ -26,13 +26,8 @@ module.exports = {
       extensions: ['.js', '.json', '.vue'],//自动添加文件名后缀
       alias: {
         //'vue': 'vue/dist/vue.js', //改变vue默认路径
-        //'@': path.resolve(__dirname, './src'),
-        // 'public': path.resolve(__dirname, './public'),
-        //'@c': path.resolve(__dirname, './src/components'),
-        // 'common': path.resolve(__dirname, './src/common'),
-        // 'api': path.resolve(__dirname, './src/api'),
-        // 'views': path.resolve(__dirname, './src/views'),
-        // 'data': path.resolve(__dirname, './src/data')
+        '@': path.resolve(__dirname, './src'),
+        'request': path.resolve(__dirname, './src/service')
       }
     }
   },

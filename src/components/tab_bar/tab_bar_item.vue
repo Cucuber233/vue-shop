@@ -12,9 +12,14 @@ export default {
     props: {
         path: String
     },
+    mounted(){
+        console.log(this.$route.path)
+    },
     methods:{
         tabBarClick(){
-            this.$router.replace(this.path)
+            if(this.$route.path !== this.path){
+                this.$router.push(this.path)
+            }
         }
     },
     computed: {
@@ -36,7 +41,7 @@ export default {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 49px;
+    height: 3.2em;
     box-sizing:content-box;
     padding-top: 6px;
 

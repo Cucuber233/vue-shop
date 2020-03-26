@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const BaseUrl = 'devApi'
+const BaseUrl = '/devApi'
+
 
 const server = axios.create({
-    baseURL: BaseUrl   // http://123.207.32.32:8000/api/wh
+    baseURL: BaseUrl  // http://123.207.32.32:8000/api/wh
 })
 
 // // 添加请求拦截器

@@ -1,6 +1,7 @@
 <template>
 <div>
-     <div id="div_">
+    <div v-if='active == "/profile" ? true : false'>
+        <div id="div_">
         <div class="top_profile">
             <article>
                 <aside class="me">
@@ -26,65 +27,76 @@
         <div class="bottom_div"></div>
     </div>
     <footer>
-        <div>
+        <div @click='btn_("订单")'>
             <span>我的订单</span>
             <span>查看订单<img align=absmiddle src='../../assets/images/profile/right.png' alt="图片加载失败"></span>
         </div>
         <div class="new_">
             <ul>
-                <li>
+                <li @click='btn_("等待")'>
                     <img align=absmiddle src='../../assets/images/profile/card.png' alt="图片加载失败">
                     <br>
                     <span>等待付款</span>
-                </li>
+                </li @click='btn_("等待")'>
                  <li>
                     <img align=absmiddle src='../../assets/images/profile/clock.png' alt="图片加载失败">
                     <br>
                     <span>等待发货</span>
                 </li>
-                 <li>
+                 <li @click='btn_("等待")'>
                     <img align=absmiddle src='../../assets/images/profile/car.png' alt="图片加载失败">
                     <br>
                     <span>等待收货</span>
                 </li>
             </ul>
         </div>
-        <div @click=''>
-            <span>收货地址</span>
+        <div @click='btn_("地址")'>
+            <span >收货地址</span>
             <span>中国四川成都市<img align=absmiddle src='../../assets/images/profile/right.png' alt="图片加载失败"></span>
         </div>
-         <div>
+         <div @click='btn_("密码")'>
             <span>修改密码</span>
             <span>修改密码<img align=absmiddle src='../../assets/images/profile/right.png' alt="图片加载失败"></span>
         </div>
-        <div>
+        <div @click='btn_("账户")'>
             <span>绑定账户</span>
             <span>13699616<img align=absmiddle src='../../assets/images/profile/right.png' alt="图片加载失败"></span>
         </div>
-        <div>
+        <div @click='btn_("设置")'>
             <span>设置</span>
             <span><img align=absmiddle src='../../assets/images/profile/right.png' alt="图片加载失败"></span>
         </div>
     </footer>
+    </div>
+     <router-view clone='active' />
 </div>
 </template>
 
 <script>
+import router from '../router/index'
 export default {
     name: 'profile',
     data(){
         return{
-            image: '../../assets/images/profile/me.png',
+            //image: '../../assets/images/profile/me.png',
             data:[
                 {'id':'我的积分', 'num':2020},
                 {'id':'商品收藏', 'num': 365},
                 {'id':'店铺收藏', 'num': 15}
-            ]
+            ],
+            active : this.$route.path
         }
     },
     methods:{
-
-    }
+        btn_(path_){
+            this.$router.push({ name: path_, params:{flag: path_, lastpath: this.$route.path} })
+            this.active = 'no'
+        }
+    },
+    // beforeRouteLeave (to, from, next) {
+    //     console.log(this.$route.path)
+    //     next()
+    // } 
 }
 </script>
 

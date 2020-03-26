@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="goods_top">
-            <article v-for='(item, index) in goods[activeIndex].list' :key='index'>
+            <article v-for='(item, index) in goods[activeIndex].list' :key='index' @click='goodsClick(item.iid)'>
                 <div class="images"><img :src="item.show.img" alt="图片加载失败"></div>
                 <p>{{item.title}}</p> 
                 <p>￥&nbsp;{{item.price}}</p> 
@@ -21,8 +21,11 @@ export default {
             default: 0
         }
     },
-    mounted(){   
+    created(){   
         this.begin()
+    },
+     destroyed(){
+        console.log(2)
     },
     methods:{
         begin(){
@@ -33,10 +36,8 @@ export default {
             })
             }
         },
-        request(type,page){
-            // goodsRequest(type,page).then(res => {
-            //     console.log(res)
-            // })
+        goodsClick(id){
+            this.$router.push({name: '商品详情', params: {iid: id}})
         }
     },
     data(){
@@ -48,13 +49,14 @@ export default {
             ],
             page: 1
         }
-    }
+    },
 }
 </script>
 
 <style lang="less">
 .goods_top{
     margin-top: .3em;
+    margin-bottom: 3.3em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

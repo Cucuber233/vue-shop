@@ -6,9 +6,11 @@
             <button>定&nbsp;位</button>
         </div>
         <!-- <div class="swiper_"> -->
-            <swiper-tab />
+            <swiper-tab :images='swiperimg' />
         <!-- </div> -->
-        <tab-control />
+        <keep-alive>
+            <router-view />
+        </keep-alive>
     </div>
 </template>
 
@@ -18,13 +20,22 @@ import tabControl from "../components/tab_control/tabControl.vue";
 export default {
     name: 'home',
     components:{ swiperTab, tabControl },
+    mounted(){
+        console.log(this.$route.path)
+    },
     methods:{
         search(){
             this.$router.push('/home/search')
         }
     },
     data(){
-        return{}
+        return{
+            swiperimg: [
+                "../../../assets/images/swipers/tu0.jpg",
+                "../../../assets/images/swipers/tu2.jpg",
+                "../../../assets/images/swipers/tu3.jpg"
+            ]
+        }
     }
 }
 </script>
@@ -38,7 +49,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 95%;
+    width: 99%;
     height: 30px;
     background-color: #bdc3c7;
 }
@@ -57,9 +68,4 @@ button{
     width: 50px;
     height: 27px;
 }
-// .swiper_{
-//     width: 100%;
-//     height: 200px;
-//     overflow: hidden;
-// }
 </style>
